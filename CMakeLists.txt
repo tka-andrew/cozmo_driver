@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(cozmo_driver)
 
 ## Find catkin macros and libraries
@@ -105,6 +105,7 @@ catkin_package(
 #  LIBRARIES cozmo_driver
 #  CATKIN_DEPENDS geometry_msgs rospy std_msgs
 #  DEPENDS system_lib
+  CATKIN_DEPENDS rospy std_msgs
 )
 
 ###########
