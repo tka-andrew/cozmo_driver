@@ -201,10 +201,6 @@ class CozmoTeleop(object):
                     self.lift_height = MIN_LIFT_HEIGHT
                 lift_changed = True
 
-            # debug
-            else:
-                print(ord(ord_key))
-
             # publish commands (head angle and lift height on change only)
             self._cmd_vel_pub.publish(cmd_vel)
             if head_changed:
