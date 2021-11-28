@@ -153,6 +153,14 @@ include_directories(
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+catkin_install_python(PROGRAMS  
+  nodes/cozmo_driver.py
+  nodes/head_lift_joy.py
+  nodes/teleop_key.py
+  nodes/transformations.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS cozmo_driver cozmo_driver_node
