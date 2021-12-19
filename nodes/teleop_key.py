@@ -131,56 +131,38 @@ class CozmoTeleop(object):
             # get key
             key = self.get_key()
 
-            # get number from key
-            ord_key = ord(key)
-
             # ctrl+c
-            if ord_key == 3:
+            if key == '\x03': # Ctrl + C
                 print('Shutdown')
                 break
 
-            # esc
-            if ord_key == 27:
-                print('Escaping')
-                key_1 = self.get_key()
-                key_2 = self.get_key()
-                ord_key2 = ord(key_2)
-                if ord_key2 == 65:
-                    ord_key = 119
-                elif ord_key2 == 66:
-                    ord_key = 115
-                elif ord_key2 == 67:
-                    ord_key = 97
-                elif ord_key2 == 68:
-                    ord_key = 100
-
             # robot
             # w - forward
-            elif ord_key == 119:
+            elif key == 'w':
                 cmd_vel.linear.x = self.lin_vel
             # s - backward
-            elif ord_key == 115:
+            elif key == 's':
                 cmd_vel.linear.x = -self.lin_vel
             # a - turn left
-            elif ord_key == 97:
+            elif key == 'a':
                 cmd_vel.angular.z = self.ang_vel
             # d - turn right
-            elif ord_key == 100:
+            elif key == 'd':
                 cmd_vel.angular.z = -self.ang_vel
 
             # head movement
             # r - up
-            elif ord_key == 114:
+            elif key =='r':
                 self.head_angle += HEAD_ADJUSTMENT_RATE
                 if self.head_angle > MAX_HEAD_ANGLE:
                     self.head_angle = MAX_HEAD_ANGLE
                 head_changed = True
             # f - center
-            elif ord_key == 102:
+            elif key == 'f':
                 self.head_angle = STD_HEAD_ANGLE
                 head_changed = True
             # v - down
-            elif ord_key == 118:
+            elif key == 'v':
                 self.head_angle -= HEAD_ADJUSTMENT_RATE
                 if self.head_angle < MIN_HEAD_ANGLE:
                     self.head_angle = MIN_HEAD_ANGLE
@@ -188,17 +170,17 @@ class CozmoTeleop(object):
 
             # lift movement
             # t - up
-            elif ord_key == 116:
+            elif key == 't':
                 self.lift_height += LIFT_ADJUSTMENT_RATE
                 if self.lift_height > MAX_LIFT_HEIGHT:
                     self.lift_height = MAX_LIFT_HEIGHT
                 lift_changed = True
             # g - center
-            elif ord_key == 103:
+            elif key == 'g':
                 self.lift_height = STD_LIFT_HEIGHT
                 lift_changed = True
             # b - down
-            elif ord_key == 98:
+            elif key == 'b':
                 self.lift_height -= LIFT_ADJUSTMENT_RATE
                 if self.lift_height < MIN_LIFT_HEIGHT:
                     self.lift_height = MIN_LIFT_HEIGHT
