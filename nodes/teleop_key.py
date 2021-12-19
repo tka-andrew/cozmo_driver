@@ -53,6 +53,9 @@ MAX_LIFT_HEIGHT = 92.0
 STD_LIFT_HEIGHT = 32.0
 SUM_LIFT_HEIGHT = MAX_LIFT_HEIGHT - MIN_LIFT_HEIGHT
 
+HEAD_ADJUSTMENT_RATE = 2.0
+LIFT_ADJUSTMENT_RATE = 2.0
+
 
 class CozmoTeleop(object):
     """
@@ -168,7 +171,7 @@ class CozmoTeleop(object):
             # head movement
             # r - up
             elif ord_key == 114:
-                self.head_angle += 2.0
+                self.head_angle += HEAD_ADJUSTMENT_RATE
                 if self.head_angle > MAX_HEAD_ANGLE:
                     self.head_angle = MAX_HEAD_ANGLE
                 head_changed = True
@@ -178,7 +181,7 @@ class CozmoTeleop(object):
                 head_changed = True
             # v - down
             elif ord_key == 118:
-                self.head_angle -= 2.0
+                self.head_angle -= HEAD_ADJUSTMENT_RATE
                 if self.head_angle < MIN_HEAD_ANGLE:
                     self.head_angle = MIN_HEAD_ANGLE
                 head_changed = True
@@ -186,7 +189,7 @@ class CozmoTeleop(object):
             # lift movement
             # t - up
             elif ord_key == 116:
-                self.lift_height += 2.0
+                self.lift_height += LIFT_ADJUSTMENT_RATE
                 if self.lift_height > MAX_LIFT_HEIGHT:
                     self.lift_height = MAX_LIFT_HEIGHT
                 lift_changed = True
@@ -196,7 +199,7 @@ class CozmoTeleop(object):
                 lift_changed = True
             # b - down
             elif ord_key == 98:
-                self.lift_height -= 2.0
+                self.lift_height -= LIFT_ADJUSTMENT_RATE
                 if self.lift_height < MIN_LIFT_HEIGHT:
                     self.lift_height = MIN_LIFT_HEIGHT
                 lift_changed = True
